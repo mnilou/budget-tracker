@@ -5,11 +5,11 @@ const FILES_TO_CACHE = [
     "/db.js",
     "/style.css"];
 
-    const CACHE_NAME = 'static-cache-v13';
-    const DATA_CACHE_NAME = 'data-cache-v8';
+    const CACHE_NAME = 'static-cache-v2';
+    const DATA_CACHE_NAME = 'data-cache-v1';
 
     //Install service worker
-    self.addEventListener('install', evt => {
+    self.addEventListener('install', function (evt) {
         evt.waitUntil(
             caches.open(CACHE_NAME).then(cache =>{
                 console.log('Your files were pre-cached successfully');
@@ -19,8 +19,8 @@ const FILES_TO_CACHE = [
         self.skipWaiting();
     });
 
-    // Activate Service Worker
-    self.addEventListener('activate', evt => {
+    // Activate service worker
+    self.addEventListener('activate', function (evt) {
         evt.waitUntil(
             caches.keys().then(keyList => {
                 return Promise.all(
@@ -36,8 +36,8 @@ const FILES_TO_CACHE = [
         self.clients.claim();
     });
 
-    // 5. Fetch Files
-    self.addEventListener('fetch',  evt =>{
+    // Fetch files
+    self.addEventListener('fetch', function (evt){
         if (evt.request.url.includes('/api/')) {
             console.log('[Service Worker] Fetch (data)', evt.request.url);
 
