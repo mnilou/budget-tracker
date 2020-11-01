@@ -19,7 +19,7 @@
 
 ## Table of contents
 
-- [Licence](#Licence)
+- [License](#License)
 - [Description](#Description)
 - [Screenshots](#Screenshots)
 - [Installation](#Installation)
